@@ -1,6 +1,6 @@
 import React from 'react';
 import { HeartHandshake } from 'lucide-react';
-import logoImg from '../assets/logo.png';
+import logoImg from '../assets/logo_figures.png';
 
 export default function Footer() {
   return (

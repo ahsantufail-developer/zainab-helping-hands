@@ -1,6 +1,7 @@
 import React, { useRef } from 'react';
 import { Heart, Droplets, ShieldCheck } from 'lucide-react';
 import { useScrollAnimation } from '../hooks/useScrollAnimation';
+import missionImg from '../assets/mission_img.png';
 
 export default function MissionSection() {
   const sectionRef = useRef(null);
@@ -10,20 +11,31 @@ export default function MissionSection() {
     <section id="mission" ref={sectionRef} className="section-padding bg-white relative overflow-hidden">
       <div className="container-custom grid md:grid-cols-12 gap-12 items-center">
         
-        {/* Left Column */}
+        {/* Left Column - Image */}
         <div className="md:col-span-5 relative reveal-left">
           <div className="absolute -left-12 -top-12 text-9xl text-gold-500 opacity-[0.08] font-display font-bold leading-none select-none">
             "
           </div>
-          <div className="h-[1px] w-[60px] bg-gold-500 mb-6"></div>
-          <span className="font-body uppercase tracking-widest text-gold-500 text-sm font-semibold mb-4 block">Our Mission</span>
-          <h2 className="font-heading text-4xl md:text-5xl leading-tight text-green-950">
-            Deliver Proof,<br/>Not Just Promises
-          </h2>
+          <div className="relative rounded-2xl overflow-hidden shadow-2xl group">
+            <img 
+              src={missionImg} 
+              alt="Volunteers distributing aid" 
+              className="w-full h-[420px] object-cover transition-transform duration-700 group-hover:scale-105"
+            />
+            <div 
+              className="absolute inset-0"
+              style={{ background: 'linear-gradient(135deg, rgba(10,26,15,0.3) 0%, transparent 50%, rgba(201,149,42,0.15) 100%)' }}
+            />
+          </div>
         </div>
 
         {/* Right Column */}
         <div className="md:col-span-7 reveal-right">
+          <div className="h-[1px] w-[60px] bg-gold-500 mb-6"></div>
+          <span className="font-body uppercase tracking-widest text-gold-500 text-sm font-semibold mb-4 block">Our Mission</span>
+          <h2 className="font-heading text-4xl md:text-5xl leading-tight text-green-950 mb-6">
+            Deliver Proof,<br/>Not Just Promises
+          </h2>
           <p className="font-body text-textMuted text-lg leading-relaxed mb-6">
             We believe that every donation is an amanah (trust). Our goal is to provide verified, documented, and structured welfare support to families across Pakistan. We don't just distribute aid; we deliver dignity and transparent accountability.
           </p>

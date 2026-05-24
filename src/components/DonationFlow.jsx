@@ -5,6 +5,10 @@ import QRPayment from './QRPayment';
 import SuccessState from './SuccessState';
 import { Check } from 'lucide-react';
 
+import progFood from '../assets/gallery_food.png';
+import progWater from '../assets/gallery_water.png';
+import progFamily from '../assets/gallery_widow.png';
+
 const CAUSES = [
   {
     id: 'food',
@@ -12,7 +16,7 @@ const CAUSES = [
     name: 'Monthly Rashan Package',
     impact: 'Feeds 1 family for 30 days',
     counter: '312 packages this month',
-    image: 'https://images.unsplash.com/photo-1593113598332-cd288d649433?w=800&auto=format&fit=crop&q=80'
+    image: progFood
   },
   {
     id: 'water',
@@ -20,7 +24,7 @@ const CAUSES = [
     name: 'Clean Water Installation',
     impact: 'Serves a community for years',
     counter: '87 installations complete',
-    image: 'https://images.unsplash.com/photo-1541252260730-0412e8e2108e?w=800&auto=format&fit=crop&q=80'
+    image: progWater
   },
   {
     id: 'family',
@@ -28,7 +32,7 @@ const CAUSES = [
     name: 'Widow & Orphan Support',
     impact: 'Monthly care for a family',
     counter: 'Active ongoing cases',
-    image: 'https://images.unsplash.com/photo-1509099836639-18ba1795216d?w=800&auto=format&fit=crop&q=80'
+    image: progFamily
   }
 ];
 

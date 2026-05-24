@@ -1,20 +1,24 @@
 import React from 'react';
 import { TiltCard, StaggerContainer, StaggerItem } from './shared';
 
+import imgFood from '../assets/gallery_food.png';
+import imgWater from '../assets/gallery_water.png';
+import imgFamily from '../assets/gallery_orphan.png';
+
 const programs = [
   {
     title: 'Monthly Rashan Package',
-    image: 'https://images.unsplash.com/photo-1593113598332-cd288d649433?w=1200&auto=format&fit=crop&q=80',
+    image: imgFood,
     description: 'Providing comprehensive food supplies to verified families, ensuring no one in our community sleeps hungry.'
   },
   {
     title: 'Clean Water Installation',
-    image: 'https://images.unsplash.com/photo-1541252260730-0412e8e2108e?w=1200&auto=format&fit=crop&q=80',
+    image: imgWater,
     description: 'Installing hand pumps and deep wells in water-scarce regions as a sustainable Sadaqah Jariyah.'
   },
   {
     title: 'Widow & Orphan Support',
-    image: 'https://images.unsplash.com/photo-1509099836639-18ba1795216d?w=1200&auto=format&fit=crop&q=80',
+    image: imgFamily,
     description: 'Monthly financial assistance, education support, and healthcare for the most vulnerable families.'
   }
 ];

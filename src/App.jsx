@@ -4,6 +4,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useGSAP } from '@gsap/react';
 import SplitType from 'split-type';
 import { Heart } from 'lucide-react';
+import heroBg from './assets/hero_bg.png';
 
 import Navbar from './components/Navbar';
 import HeroShader from './components/HeroShader';
@@ -105,8 +106,8 @@ function App() {
 
         {/* Full-bleed background image with gradient overlay */}
         <div 
-          className="absolute inset-0 z-[2] bg-cover bg-center md:hidden lg:block"
-          style={{ backgroundImage: 'url(https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?w=1200&auto=format&fit=crop&q=80)' }}
+          className="absolute inset-0 z-[2] bg-cover bg-center"
+          style={{ backgroundImage: `url(${heroBg})` }}
         >
           <div 
             className="absolute inset-0"

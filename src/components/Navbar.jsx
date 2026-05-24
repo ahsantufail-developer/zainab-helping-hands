@@ -4,11 +4,11 @@ import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useGSAP } from '@gsap/react';
 import { motion, AnimatePresence } from 'framer-motion';
-import logoImg from '../assets/logo.png';
+import logoImg from '../assets/logo_figures.png';
 
 gsap.registerPlugin(ScrollTrigger);
 
-const navLinks = ['Mission', 'Programs', 'Process', 'Impact', 'Gallery', 'Values'];
+const navLinks = ['Mission', 'Programs', 'Process', 'Impact', 'Gallery', 'Team'];
 
 export default function Navbar() {
   const navRef = useRef(null);
