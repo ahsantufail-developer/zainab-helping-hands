@@ -1,5 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react';
-import { motion } from 'framer-motion';
+import React, { useState } from 'react';
 import Lightbox from './Lightbox';
 
 import galleryGift from '../assets/gallery_real_gift.jpg';
@@ -10,10 +9,12 @@ import galleryFood from '../assets/gallery_real_food.jpg';
 import galleryBriefing from '../assets/gallery_real_briefing.jpg';
 import galleryTeam from '../assets/gallery_real_team.jpg';
 import galleryPacking from '../assets/gallery_real_packing.jpg';
-import galleryCommunity from '../assets/gallery_real_community.jpg';
 import galleryYouth from '../assets/gallery_real_youth.jpg';
+import galleryServing from '../assets/gallery_real_serving.jpg';
+import galleryLoading from '../assets/gallery_real_loading.jpg';
+import galleryVan from '../assets/gallery_real_van.jpg';
 
-const galleryImages = [
+const row1Images = [
   {
     src: galleryGift,
     caption: 'Gift Packs for Community Smiles',
@@ -23,21 +24,6 @@ const galleryImages = [
     src: galleryKids,
     caption: 'Childhood Care & Creativity',
     alt: 'A young girl in a vibrant floral dress sitting on a floor mat and coloring a drawing on a clipboard during a kids activity session.'
-  },
-  {
-    src: galleryCart,
-    caption: 'Meal Cargo Ready for Distribution',
-    alt: 'A red three-wheel cargo loader packed with cooked lunch boxes and juice cartons, prepared for street food distribution drives.'
-  },
-  {
-    src: galleryBadges,
-    caption: 'Dedicated Volunteer Network',
-    alt: 'Stacked official volunteer ID badges printed with Zainab Helping Hands titles, social handles, and logos in transparent protective cases.'
-  },
-  {
-    src: galleryFood,
-    caption: 'Organized Styrofoam Food Packages',
-    alt: 'Neatly organized white styrofoam lunch boxes in bags, prepped and stickered with the organization label for the daily food drive.'
   },
   {
     src: galleryBriefing,
@@ -50,14 +36,9 @@ const galleryImages = [
     alt: 'A group of Zainab Helping Hands volunteers standing proudly side-by-side inside the brick-walled distribution center.'
   },
   {
-    src: galleryPacking,
-    caption: 'Bagging Prepared Meals',
-    alt: 'Two dedicated youth volunteers in safety vests working on their knees to pack individual hot meals into distribution bags.'
-  },
-  {
-    src: galleryCommunity,
-    caption: 'Direct Community Connection',
-    alt: 'Co-founder standing outdoors with a local elder in a purple tunic and a smiling boy, sharing a positive moment.'
+    src: galleryServing,
+    caption: 'Flood Relief Camp Food Service',
+    alt: 'A dedicated volunteer coordinator serving warm rice dishes directly to children at the local flood relief campsite.'
   },
   {
     src: galleryYouth,
@@ -66,68 +47,79 @@ const galleryImages = [
   }
 ];
 
+const row2Images = [
+  {
+    src: galleryCart,
+    caption: 'Meal Cargo Ready for Distribution',
+    alt: 'A red three-wheel cargo loader packed with cooked lunch boxes and juice cartons, prepared for street food distribution drives.'
+  },
+  {
+    src: galleryFood,
+    caption: 'Organized Styrofoam Food Packages',
+    alt: 'Neatly organized white styrofoam lunch boxes in bags, prepped and stickered with the organization label for the daily food drive.'
+  },
+  {
+    src: galleryPacking,
+    caption: 'Bagging Prepared Meals',
+    alt: 'Two dedicated youth volunteers in safety vests working on their knees to pack individual hot meals into distribution bags.'
+  },
+  {
+    src: galleryLoading,
+    caption: 'Loading Relief Sacks',
+    alt: 'Volunteers actively working together to distribute and load large relief packages and daily goods from a cargo truck.'
+  },
+  {
+    src: galleryVan,
+    caption: 'Flood Relief Camp Transport Prep',
+    alt: 'Zainab Helping Hands volunteers preparing the side banner of a white distribution van containing essential goods for the flood relief camp.'
+  },
+  {
+    src: galleryBadges,
+    caption: 'Dedicated Volunteer Network Badges',
+    alt: 'Stacked official volunteer ID badges printed with Zainab Helping Hands titles, social handles, and logos in transparent protective cases.'
+  }
+];
+
+const allImages = [...row1Images, ...row2Images];
+
 export default function GallerySection() {
   const [activeIndex, setActiveIndex] = useState(null);
-  const [isPaused, setIsPaused] = useState(false);
-  const scrollContainerRef = useRef(null);
-
-  // Auto-scroll loop
-  useEffect(() => {
-    if (isPaused) return;
-
-    const interval = setInterval(() => {
-      if (scrollContainerRef.current) {
-        const { scrollLeft, scrollWidth, clientWidth } = scrollContainerRef.current;
-        
-        // Loop back to start if we reach close to the end
-        if (scrollLeft + clientWidth >= scrollWidth - 20) {
-          scrollContainerRef.current.scrollTo({ left: 0, behavior: 'smooth' });
-        } else {
-          // Scroll by one card-width equivalent (approx 360px on mobile, 450px on desktop)
-          const scrollStep = clientWidth > 768 ? 400 : 300;
-          scrollContainerRef.current.scrollTo({ 
-            left: scrollLeft + scrollStep, 
-            behavior: 'smooth' 
-          });
-        }
-      }
-    }, 3500); // Smooth scroll every 3.5 seconds
-
-    return () => clearInterval(interval);
-  }, [isPaused]);
-
-  const scroll = (direction) => {
-    // Temporarily pause auto-scroll upon user manual click to allow reading
-    setIsPaused(true);
-    setTimeout(() => setIsPaused(false), 8000);
-
-    if (scrollContainerRef.current) {
-      const { scrollLeft, clientWidth } = scrollContainerRef.current;
-      const scrollTo = direction === 'left' 
-        ? scrollLeft - clientWidth * 0.75 
-        : scrollLeft + clientWidth * 0.75;
-      scrollContainerRef.current.scrollTo({ left: scrollTo, behavior: 'smooth' });
-    }
-  };
 
   const handleNav = (dir) => {
     setActiveIndex(prev => {
       if (prev === null) return null;
       let next = prev + dir;
-      if (next < 0) next = galleryImages.length - 1;
-      if (next >= galleryImages.length) next = 0;
+      if (next < 0) next = allImages.length - 1;
+      if (next >= allImages.length) next = 0;
       return next;
     });
   };
 
   return (
-    <section 
-      id="gallery" 
-      className="relative bg-[#0A1A0F] py-24 md:py-32 overflow-hidden border-t border-b border-white/5"
-      onMouseEnter={() => setIsPaused(true)}
-      onMouseLeave={() => setIsPaused(false)}
-    >
+    <section id="gallery" className="relative bg-[#0A1A0F] py-24 md:py-32 overflow-hidden border-t border-b border-white/5">
       <style>{`
+        @keyframes marqueeLeft {
+          0% { transform: translateX(0); }
+          100% { transform: translateX(-50%); }
+        }
+        @keyframes marqueeRight {
+          0% { transform: translateX(-50%); }
+          100% { transform: translateX(0); }
+        }
+        .marquee-track-left {
+          display: flex;
+          width: max-content;
+          animation: marqueeLeft 45s linear infinite;
+        }
+        .marquee-track-right {
+          display: flex;
+          width: max-content;
+          animation: marqueeRight 45s linear infinite;
+        }
+        .marquee-container:hover .marquee-track-left,
+        .marquee-container:hover .marquee-track-right {
+          animation-play-state: paused;
+        }
         .no-scrollbar::-webkit-scrollbar {
           display: none;
         }
@@ -137,7 +129,7 @@ export default function GallerySection() {
         }
       `}</style>
 
-      {/* Decorative background element */}
+      {/* Decorative radial background */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-7xl h-full pointer-events-none opacity-5">
         <svg width="100%" height="100%" viewBox="0 0 100 100" preserveAspectRatio="none">
           <defs>
@@ -150,115 +142,136 @@ export default function GallerySection() {
         </svg>
       </div>
 
-      <div className="container-custom relative z-10">
+      <div className="relative z-10">
         {/* Header */}
         <div className="text-center max-w-2xl mx-auto mb-16 px-4">
-          <motion.span 
-            className="font-body uppercase tracking-[0.25em] text-gold-500 text-xs font-semibold mb-4 block"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-          >
-            ✦ Transparency In Action ✦
-          </motion.span>
-          <motion.h2 
-            className="font-heading text-4xl md:text-5xl text-white mb-6"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.1 }}
-          >
+          <span className="font-body uppercase tracking-[0.25em] text-gold-500 text-xs font-semibold mb-4 block animate-pulse">
+            ✦ Ground Reality & Transparency ✦
+          </span>
+          <h2 className="font-heading text-4xl md:text-5xl text-white mb-6">
             Our Impact in Pictures
-          </motion.h2>
-          <motion.div 
-            className="h-[1px] w-[120px] bg-gradient-to-r from-transparent via-gold-500 to-transparent mx-auto"
-            initial={{ scaleX: 0 }}
-            whileInView={{ scaleX: 1 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.2, duration: 0.8 }}
-          />
+          </h2>
+          <div className="h-[1px] w-[120px] bg-gradient-to-r from-transparent via-gold-500 to-transparent mx-auto" />
         </div>
 
-        {/* Carousel Wrapper */}
-        <div className="relative group w-full">
+        {/* Endless Marquee Wrapper */}
+        <div className="relative w-full space-y-6 md:space-y-8 py-4 marquee-container">
           
-          {/* Dark Color Blur/Gradient Overlays at Edges */}
-          <div className="absolute left-0 top-0 bottom-0 w-16 sm:w-24 md:w-48 bg-gradient-to-r from-[#0A1A0F] via-[#0A1A0F]/70 to-transparent z-20 pointer-events-none" />
-          <div className="absolute right-0 top-0 bottom-0 w-16 sm:w-24 md:w-48 bg-gradient-to-l from-[#0A1A0F] via-[#0A1A0F]/70 to-transparent z-20 pointer-events-none" />
+          {/* Subtle Fading Edge Overlays (Not Heavy/Dark Shadows) */}
+          <div className="absolute left-0 top-0 bottom-0 w-8 sm:w-16 md:w-28 bg-gradient-to-r from-[#0A1A0F]/30 to-transparent z-20 pointer-events-none" />
+          <div className="absolute right-0 top-0 bottom-0 w-8 sm:w-16 md:w-28 bg-gradient-to-l from-[#0A1A0F]/30 to-transparent z-20 pointer-events-none" />
 
-          {/* Navigation Buttons */}
-          <button 
-            onClick={() => scroll('left')}
-            className="absolute left-4 md:left-8 top-1/2 -translate-y-1/2 z-30 bg-white/10 hover:bg-gold-500 hover:text-green-950 active:scale-95 border border-white/10 text-white rounded-full p-4 transition-all duration-300 opacity-0 group-hover:opacity-100 shadow-[0_4px_24px_rgba(0,0,0,0.5)] backdrop-blur-md hidden sm:block"
-            aria-label="Scroll Left"
-          >
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-              <polyline points="15 18 9 12 15 6"></polyline>
-            </svg>
-          </button>
-          
-          <button 
-            onClick={() => scroll('right')}
-            className="absolute right-4 md:right-8 top-1/2 -translate-y-1/2 z-30 bg-white/10 hover:bg-gold-500 hover:text-green-950 active:scale-95 border border-white/10 text-white rounded-full p-4 transition-all duration-300 opacity-0 group-hover:opacity-100 shadow-[0_4px_24px_rgba(0,0,0,0.5)] backdrop-blur-md hidden sm:block"
-            aria-label="Scroll Right"
-          >
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-              <polyline points="9 18 15 12 9 6"></polyline>
-            </svg>
-          </button>
-
-          {/* Horizontal Scroll Box */}
-          <div 
-            ref={scrollContainerRef}
-            className="flex gap-6 overflow-x-auto no-scrollbar scroll-smooth snap-x snap-mandatory py-4 px-8 sm:px-24 md:px-36"
-            style={{ scrollbarWidth: 'none' }}
-            onTouchStart={() => setIsPaused(true)}
-            onTouchEnd={() => {
-              // Delay resumption of scroll after mobile touch gesture ends
-              setTimeout(() => setIsPaused(false), 5000);
-            }}
-          >
-            {galleryImages.map((img, i) => (
-              <motion.div 
-                key={i}
-                initial={{ opacity: 0, scale: 0.95 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: i * 0.05 }}
-                className="flex-none w-[290px] sm:w-[380px] md:w-[480px] aspect-[4/3] relative rounded-2xl overflow-hidden snap-center group/card cursor-pointer border border-white/10 shadow-2xl hover:border-gold-500/40 hover:shadow-[0_0_40px_rgba(201,149,42,0.15)] transition-all duration-500"
-                onClick={() => setActiveIndex(i)}
-              >
-                <img 
-                  src={img.src} 
-                  alt={img.alt}
-                  className="w-full h-full object-cover transform transition-transform duration-700 ease-out group-hover/card:scale-105"
-                  loading="lazy"
-                />
-                
-                {/* Visual card overlay */}
+          {/* Row 1: Leftward Infinite Marquee */}
+          <div className="overflow-hidden w-full flex">
+            <div className="marquee-track-left gap-4 md:gap-6 px-2">
+              {/* Render original list */}
+              {row1Images.map((img, i) => (
                 <div 
-                  className="absolute inset-0 bg-gradient-to-t from-[#0A1A0F] via-[#0A1A0F]/30 to-transparent flex flex-col justify-end p-6 sm:p-8 opacity-90 group-hover/card:opacity-100 transition-opacity duration-300"
+                  key={`r1-${i}`}
+                  className="w-[260px] sm:w-[340px] md:w-[420px] aspect-[4/3] relative rounded-xl overflow-hidden group/card cursor-pointer border border-white/10 hover:border-gold-500/40 transition-all duration-300 flex-shrink-0 shadow-lg"
+                  onClick={() => setActiveIndex(i)}
                 >
-                  <span className="text-gold-500 font-body text-[10px] sm:text-xs font-semibold uppercase tracking-[0.2em] mb-1.5 block">
-                    ✦ Live Welfare Drive ✦
-                  </span>
-                  <h3 className="text-white font-heading text-lg sm:text-xl md:text-2xl mb-2 leading-snug">
-                    {img.caption}
-                  </h3>
-                  <p className="text-white/60 font-body text-xs sm:text-sm leading-relaxed line-clamp-2 transform translate-y-3 group-hover/card:translate-y-0 transition-transform duration-500">
-                    {img.alt}
-                  </p>
+                  <img 
+                    src={img.src} 
+                    alt={img.alt}
+                    className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover/card:scale-105"
+                    loading="lazy"
+                  />
+                  {/* Subtle, minimal caption displayed only on hover (No heavy dark overlays) */}
+                  <div className="absolute inset-0 bg-black/60 opacity-0 group-hover/card:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+                    <span className="text-gold-500 font-body text-[10px] sm:text-xs font-semibold uppercase tracking-[0.2em] mb-1">
+                      ✦ ZHH Welfare Drive ✦
+                    </span>
+                    <h3 className="text-white font-heading text-base sm:text-lg">
+                      {img.caption}
+                    </h3>
+                  </div>
                 </div>
-              </motion.div>
-            ))}
+              ))}
+              {/* Duplicate list for mathematically seamless looping */}
+              {row1Images.map((img, i) => (
+                <div 
+                  key={`r1-dup-${i}`}
+                  className="w-[260px] sm:w-[340px] md:w-[420px] aspect-[4/3] relative rounded-xl overflow-hidden group/card cursor-pointer border border-white/10 hover:border-gold-500/40 transition-all duration-300 flex-shrink-0 shadow-lg"
+                  onClick={() => setActiveIndex(i)}
+                >
+                  <img 
+                    src={img.src} 
+                    alt={img.alt}
+                    className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover/card:scale-105"
+                    loading="lazy"
+                  />
+                  <div className="absolute inset-0 bg-black/60 opacity-0 group-hover/card:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+                    <span className="text-gold-500 font-body text-[10px] sm:text-xs font-semibold uppercase tracking-[0.2em] mb-1">
+                      ✦ ZHH Welfare Drive ✦
+                    </span>
+                    <h3 className="text-white font-heading text-base sm:text-lg">
+                      {img.caption}
+                    </h3>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Row 2: Rightward Infinite Marquee */}
+          <div className="overflow-hidden w-full flex">
+            <div className="marquee-track-right gap-4 md:gap-6 px-2">
+              {/* Render original list */}
+              {row2Images.map((img, i) => (
+                <div 
+                  key={`r2-${i}`}
+                  className="w-[260px] sm:w-[340px] md:w-[420px] aspect-[4/3] relative rounded-xl overflow-hidden group/card cursor-pointer border border-white/10 hover:border-gold-500/40 transition-all duration-300 flex-shrink-0 shadow-lg"
+                  onClick={() => setActiveIndex(row1Images.length + i)}
+                >
+                  <img 
+                    src={img.src} 
+                    alt={img.alt}
+                    className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover/card:scale-105"
+                    loading="lazy"
+                  />
+                  <div className="absolute inset-0 bg-black/60 opacity-0 group-hover/card:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+                    <span className="text-gold-500 font-body text-[10px] sm:text-xs font-semibold uppercase tracking-[0.2em] mb-1">
+                      ✦ ZHH Welfare Drive ✦
+                    </span>
+                    <h3 className="text-white font-heading text-base sm:text-lg">
+                      {img.caption}
+                    </h3>
+                  </div>
+                </div>
+              ))}
+              {/* Duplicate list for mathematically seamless looping */}
+              {row2Images.map((img, i) => (
+                <div 
+                  key={`r2-dup-${i}`}
+                  className="w-[260px] sm:w-[340px] md:w-[420px] aspect-[4/3] relative rounded-xl overflow-hidden group/card cursor-pointer border border-white/10 hover:border-gold-500/40 transition-all duration-300 flex-shrink-0 shadow-lg"
+                  onClick={() => setActiveIndex(row1Images.length + i)}
+                >
+                  <img 
+                    src={img.src} 
+                    alt={img.alt}
+                    className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover/card:scale-105"
+                    loading="lazy"
+                  />
+                  <div className="absolute inset-0 bg-black/60 opacity-0 group-hover/card:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+                    <span className="text-gold-500 font-body text-[10px] sm:text-xs font-semibold uppercase tracking-[0.2em] mb-1">
+                      ✦ ZHH Welfare Drive ✦
+                    </span>
+                    <h3 className="text-white font-heading text-base sm:text-lg">
+                      {img.caption}
+                    </h3>
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
 
         </div>
       </div>
 
-      {/* Lightbox for large-screen presentation */}
+      {/* Clickable Lightbox Presentation */}
       <Lightbox 
-        images={galleryImages.map(g => g.src)} 
+        images={allImages.map(g => g.src)} 
         activeIndex={activeIndex} 
         onClose={() => setActiveIndex(null)} 
         onNav={handleNav} 
