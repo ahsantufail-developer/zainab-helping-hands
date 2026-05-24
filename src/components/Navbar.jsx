@@ -13,35 +13,42 @@ const navLinks = ['Mission', 'Programs', 'Process', 'Impact', 'Gallery', 'Team']
 export default function Navbar() {
   const navRef = useRef(null);
   const [isOpen, setIsOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
 
   useGSAP(() => {
     ScrollTrigger.create({
       start: 'top -60',
-      onEnter: () => gsap.to(navRef.current, {
-        backgroundColor: 'rgba(255,255,255,0.97)',
-        backdropFilter: 'blur(16px)',
-        boxShadow: '0 2px 32px rgba(0,0,0,0.08)',
-        duration: 0.4,
-        ease: 'power2.out'
-      }),
-      onLeaveBack: () => gsap.to(navRef.current, {
-        backgroundColor: 'transparent',
-        backdropFilter: 'blur(0px)',
-        boxShadow: 'none',
-        duration: 0.3
-      })
+      onEnter: () => {
+        setIsScrolled(true);
+        gsap.to(navRef.current, {
+          backgroundColor: 'rgba(255,255,255,0.97)',
+          backdropFilter: 'blur(16px)',
+          boxShadow: '0 2px 32px rgba(0,0,0,0.08)',
+          duration: 0.4,
+          ease: 'power2.out'
+        });
+      },
+      onLeaveBack: () => {
+        setIsScrolled(false);
+        gsap.to(navRef.current, {
+          backgroundColor: 'transparent',
+          backdropFilter: 'blur(0px)',
+          boxShadow: 'none',
+          duration: 0.3
+        });
+      }
     });
   }, { scope: navRef });
 
   return (
     <>
       <nav ref={navRef} className="navbar fixed top-0 left-0 right-0 z-50 transition-colors duration-300">
-        <div className="container-custom h-20 flex items-center justify-between">
+        <div className="container-custom h-24 flex items-center justify-between">
           
           {/* Logo */}
-          <div className="flex items-center gap-3 text-green-950">
-            <img src={logoImg} alt="Zainab Helping Hands Logo" className="w-14 h-14 object-contain" />
-            <span className="font-heading text-xl tracking-wide">Zainab Helping Hands</span>
+          <div className={`flex items-center gap-3 transition-colors duration-300 ${isScrolled ? 'text-green-950' : 'text-white'}`}>
+            <img src={logoImg} alt="Zainab Helping Hands Logo" className="w-20 h-20 object-contain" />
+            <span className="font-heading text-2xl tracking-wide">Zainab Helping Hands</span>
           </div>
 
           {/* Desktop Nav Links */}
@@ -50,7 +57,7 @@ export default function Navbar() {
               <a 
                 key={link} 
                 href={`#${link.toLowerCase()}`} 
-                className="font-body text-[13px] uppercase tracking-widest text-green-950 hover:text-gold-500 transition-colors"
+                className={`font-body text-[13px] uppercase tracking-widest transition-colors duration-300 hover:text-gold-500 ${isScrolled ? 'text-green-950' : 'text-white/90'}`}
               >
                 {link}
               </a>
@@ -69,7 +76,7 @@ export default function Navbar() {
 
           {/* Mobile Toggle */}
           <button 
-            className="md:hidden text-green-950 p-2"
+            className={`md:hidden p-2 transition-colors duration-300 ${isScrolled ? 'text-green-950' : 'text-white'}`}
             onClick={() => setIsOpen(true)}
           >
             <Menu size={24} />
