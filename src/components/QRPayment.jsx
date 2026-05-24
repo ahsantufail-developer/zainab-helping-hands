@@ -4,12 +4,11 @@ import { QRCodeSVG } from 'qrcode.react';
 import { generateQRValue } from '../utils/qrGenerator';
 
 export default function QRPayment({ amount, cause, isMonthly, donorDetails, onComplete }) {
-  const [activeTab, setActiveTab] = useState('jazzcash');
+  const [activeTab, setActiveTab] = useState('easypaisa');
 
   const tabs = [
-    { id: 'jazzcash', label: 'JazzCash' },
     { id: 'easypaisa', label: 'EasyPaisa' },
-    { id: 'bank', label: 'Bank Transfer' }
+    { id: 'bank', label: 'Meezan Bank' }
   ];
 
   return (
@@ -83,10 +82,10 @@ export default function QRPayment({ amount, cause, isMonthly, donorDetails, onCo
                 <div className="bg-surface rounded-lg p-6 border border-borderBase">
                   <h4 className="font-heading text-xl text-green-950 mb-4">Direct Bank Transfer</h4>
                   <div className="space-y-3 font-body text-sm text-green-950">
-                    <p><span className="text-textMuted inline-block w-24">Bank:</span> <strong>Meezan Bank (Islamic)</strong></p>
-                    <p><span className="text-textMuted inline-block w-24">Title:</span> <strong>Zainab Helping Hands</strong></p>
-                    <p><span className="text-textMuted inline-block w-24">Account:</span> <strong className="text-lg">0123-4567-8910</strong></p>
-                    <p><span className="text-textMuted inline-block w-24">IBAN:</span> <strong className="font-mono">PK42 MEZN 0001 2345 6789 10</strong></p>
+                    <p><span className="text-textMuted inline-block w-24">Bank:</span> <strong>Meezan Bank</strong></p>
+                    <p><span className="text-textMuted inline-block w-24">Title:</span> <strong>Muhammad Abubakar Ejaz</strong></p>
+                    <p><span className="text-textMuted inline-block w-24">Account:</span> <strong className="text-lg">12560108600042</strong></p>
+                    <p><span className="text-textMuted inline-block w-24">IBAN:</span> <strong className="font-mono text-xs">PK42 MEZN 0012 5601 0860 0042</strong></p>
                   </div>
                   <div className="mt-6 p-3 bg-green-100 rounded text-green-800 text-sm flex items-center justify-center text-center">
                     Screenshot this and send to WhatsApp after transfer
@@ -121,7 +120,7 @@ export default function QRPayment({ amount, cause, isMonthly, donorDetails, onCo
                       <li>Send ₨ {amount} to complete</li>
                     </ol>
                     <div className="mt-4 pt-4 border-t border-borderBase text-center text-xs text-textMuted">
-                      Or call/WhatsApp: <strong className="text-green-950">0300-1234567</strong>
+                      Or call/WhatsApp: <strong className="text-green-950">03106496614</strong>
                     </div>
                   </div>
                 </div>
