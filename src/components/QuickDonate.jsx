@@ -4,13 +4,14 @@ import qrMeezan from '../assets/qr_real_meezan.jpg';
 import qrEasypaisa from '../assets/qr_real_easypaisa.jpg';
 
 const MILESTONES = [
-  { amount: 500, icon: '🌾', label: 'Feed a child for a week', hadith: '"The best charity is that given in Ramadan." — Tirmidhi' },
-  { amount: 1000, icon: '📦', label: 'Emergency food kit', hadith: '"Charity does not decrease wealth." — Sahih Muslim' },
-  { amount: 2500, icon: '💧', label: 'Clean water for a family', hadith: '"The best of charity is giving water to drink." — Ahmad' },
-  { amount: 5000, icon: '🏠', label: 'Full Rashan Package', hadith: '"Whoever feeds a fasting person will have a reward like that of the fasting person." — Tirmidhi' },
-  { amount: 10000, icon: '🤲', label: 'Widow & orphan monthly care', hadith: '"I and the one who sponsors an orphan will be like these two in Paradise." — Bukhari' },
-  { amount: 25000, icon: '🕌', label: 'Sadaqah Jariyah — water well share', hadith: '"When a person dies, his deeds come to an end except for three: Sadaqah Jariyah..." — Muslim' },
-  { amount: 50000, icon: '⭐', label: 'Complete water installation', hadith: '"Give charity without delay, for it stands in the way of calamity." — Tirmidhi' },
+  { amount: 100, icon: '💧', label: 'Clean water for 5 people', hadith: '"The best of charity is giving water to drink." — Ahmad' },
+  { amount: 500, icon: '🌾', label: 'Nutritious hot meals for 3 children', hadith: '"Feed the hungry, visit the sick, and free the captives." — Sahih Bukhari' },
+  { amount: 1000, icon: '📦', label: 'Feed a child for a full week', hadith: '"The best charity is that given in Ramadan." — Tirmidhi' },
+  { amount: 2500, icon: '🛒', label: 'Emergency food grocery kit', hadith: '"Charity does not decrease wealth." — Sahih Muslim' },
+  { amount: 5000, icon: '🏠', label: 'Complete Monthly Rashan Package', hadith: '"Whoever feeds a fasting person will have a reward like that of the fasting person." — Tirmidhi' },
+  { amount: 10000, icon: '🤲', label: 'Widow & orphan monthly care support', hadith: '"I and the one who sponsors an orphan will be like these two in Paradise." — Bukhari' },
+  { amount: 25000, icon: '⛲', label: 'Sadaqah Jariyah — Hand Pump Installation', hadith: '"When a person dies, his deeds come to an end except for three: Sadaqah Jariyah..." — Muslim' },
+  { amount: 50000, icon: '☀️', label: 'Sponsor a widow family for a full year', hadith: '"Give charity without delay, for it stands in the way of calamity." — Tirmidhi' },
 ];
 
 const PAYMENT_METHODS = [
