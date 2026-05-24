@@ -1,0 +1,87 @@
+.contact-bar {
+  background-color: var(--color-primary);
+  color: var(--color-white);
+  padding: 15px 0;
+}
+
+.contact-grid {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.contact-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.contact-icon {
+  opacity: 0.8;
+}
+
+.footer-section {
+  background-color: var(--color-dark);
+  color: var(--color-white);
+  padding: 80px 0 30px;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  margin-bottom: 60px;
+}
+
+.footer-col {
+  max-width: 400px;
+}
+
+.footer-logo {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 30px;
+}
+
+.footer-logo-zainab {
+  font-family: var(--font-heading);
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: var(--color-white);
+  line-height: 1;
+}
+
+.footer-logo-helping {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--color-gold);
+  font-weight: 700;
+  margin-top: 2px;
+  display: block;
+}
+
+.footer-about {
+  color: #a0a0a0;
+  line-height: 1.8;
+  margin-bottom: 30px;
+}
+
+.footer-bottom {
+  border-top: 1px solid rgba(255,255,255,0.1);
+  padding-top: 30px;
+  text-align: center;
+  color: #666;
+  font-size: 0.9rem;
+}
+
+@media (max-width: 768px) {
+  .contact-grid {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}

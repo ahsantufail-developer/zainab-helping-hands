@@ -1,0 +1,86 @@
+/* Replace default Vite styles */
+#root {
+  max-width: 100%;
+  margin: 0;
+  padding: 0;
+  text-align: left;
+}
+
+/* Custom Cursor Styles */
+body {
+  cursor: none; /* Hide default cursor on desktop */
+}
+
+a, button, input, select, textarea {
+  cursor: none;
+}
+
+.custom-cursor-dot {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 6px;
+  height: 6px;
+  background-color: var(--color-gold);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+}
+
+.custom-cursor-ring {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 32px;
+  height: 32px;
+  border: 1.5px solid var(--color-gold);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9998;
+  transform: translate(-50%, -50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 10px;
+  text-transform: uppercase;
+  color: var(--color-gold);
+  font-weight: 700;
+  letter-spacing: 0.1em;
+}
+
+/* Scroll Progress Bar */
+.scroll-progress-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 2px;
+  background-color: var(--color-gold);
+  z-index: 10000;
+  width: 100%;
+  transform-origin: left center;
+  transform: scaleX(0);
+}
+
+/* Page Transition Overlay */
+.page-transition-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: var(--color-primary);
+  z-index: 10001;
+  pointer-events: none;
+  clip-path: inset(0 100% 0 0); /* Starts hidden on the right */
+}
+
+@media (max-width: 1024px) {
+  /* Disable custom cursor on mobile/tablet */
+  body, a, button, input, select, textarea {
+    cursor: auto;
+  }
+  .custom-cursor-dot, .custom-cursor-ring {
+    display: none;
+  }
+}

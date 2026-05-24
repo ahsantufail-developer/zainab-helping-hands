@@ -1,0 +1,148 @@
+@import url('https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Cormorant+Garamond:wght@600;700&family=DM+Serif+Display&family=Outfit:wght@300;400;500;600&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Colors */
+  --green-950:  #0A1A0F;   /* deepest background */
+  --green-900:  #0F2518;   /* dark sections */
+  --green-800:  #1A3D25;   /* card surfaces dark */
+  --green-700:  #1A5C38;   /* primary brand green */
+  --green-600:  #2D8653;   /* hover states */
+  --green-100:  #E8F5EE;   /* light tint */
+  --gold-500:   #C9952A;   /* primary gold */
+  --gold-400:   #E0B84A;   /* gold hover */
+  --gold-200:   #F0D899;   /* gold light */
+  --gold-glow:  rgba(201,149,42,0.35); /* glow effects */
+  --surface:    #F7F9F7;   /* page background */
+  --white:      #FFFFFF;
+  --text-dark:  #111816;
+  --text-muted: #5A6B5E;
+  --border:     #D4E2D8;
+
+  /* Typography */
+  --font-display: 'Cormorant Garamond', Georgia, serif;
+  --font-heading: 'DM Serif Display', Georgia, serif;
+  --font-body:    'Outfit', system-ui, sans-serif;
+  --font-arabic:  'Amiri', serif;
+
+  /* Spacing */
+  --section-py: 120px;
+  --container:  1280px;
+  --radius-sm:  4px;
+  --radius-md:  8px;
+  --radius-lg:  16px;
+
+  /* Shadows */
+  --shadow-sm:  0 2px 12px rgba(0,0,0,0.06);
+  --shadow-md:  0 8px 32px rgba(0,0,0,0.10);
+  --shadow-lg:  0 20px 60px rgba(0,0,0,0.15);
+  --shadow-gold: 0 0 40px rgba(201,149,42,0.20);
+
+  /* Transitions */
+  --ease-out:   cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+body {
+  font-family: var(--font-body);
+  color: var(--text-dark);
+  background-color: var(--surface);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+}
+
+.font-display {
+  font-family: var(--font-display);
+}
+
+.font-arabic {
+  font-family: var(--font-arabic);
+}
+
+.container-custom {
+  max-width: var(--container);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+@media (min-width: 768px) {
+  .container-custom {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+}
+
+.section-padding {
+  padding-top: var(--section-py);
+  padding-bottom: var(--section-py);
+}
+
+/* Image filters */
+img {
+  filter: saturate(1.1) contrast(1.02);
+}
+
+/* Floating labels for inputs */
+.float-label {
+  position: relative;
+}
+.float-label input:focus ~ label,
+.float-label input:not(:placeholder-shown) ~ label,
+.float-label textarea:focus ~ label,
+.float-label textarea:not(:placeholder-shown) ~ label {
+  transform: translateY(-24px) scale(0.8);
+  color: var(--gold-500);
+}
+.float-label label {
+  position: absolute;
+  left: 16px;
+  top: 18px;
+  transition: all 0.2s var(--ease-out);
+  pointer-events: none;
+  color: var(--text-muted);
+  transform-origin: left top;
+}
+
+/* Custom scroll progress */
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--gold-500);
+  transform: scaleX(0);
+  transform-origin: left;
+  z-index: 9999;
+}
+
+/* Gold rings */
+@keyframes qr-pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(201,149,42,0.4) }
+  50% { box-shadow: 0 0 0 12px rgba(201,149,42,0) }
+}
+.qr-wrapper {
+  animation: qr-pulse 2s ease infinite;
+}
+
+/* Progress bar shimmer */
+@keyframes shimmer-sweep {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(200%); }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}

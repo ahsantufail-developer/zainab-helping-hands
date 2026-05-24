@@ -1,0 +1,43 @@
+.programs-section {
+  padding: 120px 0;
+  background-color: var(--color-white);
+}
+
+.programs-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px;
+  margin-top: 60px;
+}
+
+.program-card {
+  background-color: var(--color-bg-light);
+  border-radius: 30px;
+  padding: 40px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.02);
+  border: 1px solid rgba(0,0,0,0.05);
+  transition: all 0.3s ease;
+}
+
+.program-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+  border-color: var(--color-primary);
+}
+
+.program-card h3 {
+  font-size: 1.6rem;
+  color: var(--color-dark);
+  margin-bottom: 15px;
+}
+
+.program-card p {
+  color: var(--color-text-light);
+  line-height: 1.7;
+}
+
+@media (max-width: 968px) {
+  .programs-grid {
+    grid-template-columns: 1fr;
+  }
+}

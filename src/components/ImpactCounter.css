@@ -1,0 +1,99 @@
+.impact-strip {
+  background-color: var(--color-primary);
+  padding: 64px 0;
+  color: var(--color-white);
+  position: relative;
+  z-index: 2;
+}
+
+.impact-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  align-items: center;
+  position: relative;
+}
+
+.impact-stat {
+  text-align: center;
+  position: relative;
+  padding: 0 24px;
+}
+
+/* Thin vertical gold divider line */
+.impact-stat:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 60px;
+  width: 1px;
+  background-color: rgba(201, 149, 42, 0.4);
+}
+
+.impact-number-wrapper {
+  font-family: var(--font-hero);
+  font-size: 64px;
+  font-weight: 700;
+  line-height: 1;
+  margin-bottom: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: baseline;
+}
+
+.impact-counter-val {
+  display: inline-block;
+  min-width: 1ch;
+}
+
+.impact-suffix {
+  font-size: 48px;
+}
+
+.impact-label {
+  font-family: var(--font-body);
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--color-gold);
+  font-weight: 600;
+}
+
+.impact-hadith {
+  text-align: center;
+  margin-top: 48px;
+  font-style: italic;
+  font-weight: 300;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 17px;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@media (max-width: 1024px) {
+  .impact-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 48px 0;
+  }
+  
+  .impact-stat:nth-child(2)::after {
+    display: none;
+  }
+}
+
+@media (max-width: 640px) {
+  .impact-grid {
+    grid-template-columns: 1fr;
+    gap: 48px 0;
+  }
+  
+  .impact-stat::after {
+    display: none;
+  }
+  
+  .impact-number-wrapper {
+    font-size: 56px;
+  }
+}

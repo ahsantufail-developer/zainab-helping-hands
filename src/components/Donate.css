@@ -1,0 +1,105 @@
+.donate-section {
+  padding: 120px 0;
+  background-color: var(--color-bg-light);
+}
+
+.donate-box {
+  background-color: var(--color-white);
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 60px;
+  border-radius: 40px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.05);
+  text-align: center;
+}
+
+.donate-subtitle {
+  font-size: 1.2rem;
+  color: var(--color-text-light);
+  margin-bottom: 40px;
+}
+
+.btn-large {
+  padding: 20px 40px;
+  font-size: 1.2rem;
+  border-radius: 15px;
+  width: 100%;
+  max-width: 400px;
+}
+
+.payment-details-container {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  animation: fadeIn 0.5s ease;
+}
+
+.bank-cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.bank-card {
+  background-color: var(--color-bg-light);
+  padding: 30px;
+  border-radius: 20px;
+  border: 1px solid rgba(0,0,0,0.05);
+  text-align: left;
+}
+
+.bank-card h4 {
+  color: var(--color-primary);
+  font-size: 1.4rem;
+  margin-bottom: 10px;
+}
+
+.bank-card p {
+  color: var(--color-text-light);
+  font-size: 0.9rem;
+}
+
+.account-number {
+  font-family: monospace;
+  font-size: 1.5rem !important;
+  color: var(--color-dark) !important;
+  font-weight: 700;
+  margin-top: 15px;
+  letter-spacing: 2px;
+}
+
+.qr-section {
+  background-color: #f0fdf4;
+  padding: 40px;
+  border-radius: 20px;
+  border: 2px dashed var(--color-primary);
+}
+
+.qr-section p {
+  font-weight: 700;
+  color: var(--color-primary);
+  margin-bottom: 20px;
+  font-size: 1.2rem;
+}
+
+.qr-code-wrapper {
+  background-color: white;
+  padding: 20px;
+  border-radius: 20px;
+  display: inline-block;
+  box-shadow: 0 10px 30px rgba(26,92,56,0.1);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 768px) {
+  .donate-box {
+    padding: 30px 20px;
+  }
+  .bank-cards {
+    grid-template-columns: 1fr;
+  }
+}

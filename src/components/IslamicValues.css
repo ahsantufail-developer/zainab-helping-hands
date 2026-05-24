@@ -1,0 +1,75 @@
+.islamic-values-section {
+  background-color: #FDF8EF;
+  text-align: center;
+}
+
+.arabic-verse {
+  font-family: var(--font-arabic);
+  font-size: clamp(32px, 5vw, 42px);
+  color: var(--color-gold);
+  margin-bottom: 16px;
+  line-height: 1.5;
+}
+
+.verse-translation {
+  font-size: 17px;
+  font-style: italic;
+  color: var(--color-text-muted);
+  max-width: 600px;
+  margin: 0 auto 48px auto;
+}
+
+.values-divider {
+  width: 120px;
+  height: 1px;
+  background-color: var(--color-gold);
+  margin: 0 auto 64px auto;
+}
+
+.giving-categories {
+  display: flex;
+  justify-content: center;
+  gap: 48px;
+  flex-wrap: wrap;
+}
+
+.giving-category {
+  flex: 1;
+  min-width: 280px;
+  max-width: 350px;
+  background-color: var(--color-white);
+  padding: 40px 32px;
+  border-radius: var(--radius-card);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+  transition: transform 0.3s ease;
+}
+
+.giving-category:hover {
+  transform: translateY(-4px);
+}
+
+.category-icon-wrapper {
+  color: var(--color-gold);
+  margin-bottom: 24px;
+  display: flex;
+  justify-content: center;
+}
+
+.category-title {
+  font-family: var(--font-heading);
+  font-size: 24px;
+  color: var(--color-dark);
+  margin-bottom: 16px;
+}
+
+.category-desc {
+  font-size: 15px;
+  color: var(--color-text-muted);
+  line-height: 1.6;
+}
+
+@media (max-width: 768px) {
+  .giving-categories {
+    gap: 24px;
+  }
+}
