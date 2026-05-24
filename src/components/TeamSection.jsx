@@ -12,21 +12,24 @@ const team = [
     role: 'Founder',
     color: '#DC2626',
     desc: 'Responsible for establishing the vision and groundwork for our welfare initiatives. His relentless dedication laid the foundation of Zainab Helping Hands.',
-    image: aliImg
+    image: aliImg,
+    orderClass: 'order-2 md:order-1'
   },
   {
     name: 'Muhammad Abubakar Ejaz',
     role: 'Founder',
     color: '#2563EB',
     desc: 'Working alongside Muhammad Ali to build, fund, and expand the reach of our community support network across Pakistan.',
-    image: abubakarImg
+    image: abubakarImg,
+    orderClass: 'order-3 md:order-2'
   },
   {
     name: 'Syed Abdul Hadi Usman',
     role: 'Chief Executive Officer',
     color: '#16A34A',
     desc: 'Leading daily operations, managing strategy, and directing the executive execution of all humanitarian projects.',
-    image: hadiImg
+    image: hadiImg,
+    orderClass: 'order-1 md:order-3'
   }
 ];
 
@@ -62,7 +65,7 @@ export default function TeamSection() {
         {/* Team Grid */}
         <StaggerContainer className="grid md:grid-cols-3 gap-8 lg:gap-10">
           {team.map((member, i) => (
-            <StaggerItem key={i} className="h-full">
+            <StaggerItem key={i} className={`h-full ${member.orderClass}`}>
               <TiltCard className="h-full rounded-2xl overflow-hidden group cursor-pointer relative bg-green-950/80 border border-white/[0.08] backdrop-blur-sm">
                 {/* Image Container */}
                 <div className="aspect-[3/4] relative overflow-hidden">

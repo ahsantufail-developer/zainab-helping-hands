@@ -158,16 +158,16 @@ function App() {
               Join Pakistan's most transparent welfare organization. We turn your charity into documented impact—with photo proof for every donation.
             </p>
             
-            <div className="flex flex-col sm:flex-row gap-4">
+            <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto max-w-md">
               <button 
                 onClick={() => document.getElementById('donate')?.scrollIntoView({ behavior: 'smooth' })}
-                className="hero-cta bg-gold-500 text-green-950 px-8 py-4 rounded font-body font-semibold text-lg hover:bg-gold-400 hover:-translate-y-1 transition-transform shadow-lg"
+                className="hero-cta bg-gold-500 text-green-950 px-8 py-4 rounded font-body font-semibold text-lg hover:bg-gold-400 hover:-translate-y-1 transition-transform shadow-lg w-full sm:w-auto text-center"
               >
                 Donate Now
               </button>
               <button 
                 onClick={() => document.getElementById('process')?.scrollIntoView({ behavior: 'smooth' })}
-                className="hero-cta bg-transparent text-white border-2 border-white/30 px-8 py-4 rounded font-body font-semibold text-lg hover:bg-white/10 hover:border-white transition-colors"
+                className="hero-cta bg-transparent text-white border-2 border-white/30 px-8 py-4 rounded font-body font-semibold text-lg hover:bg-white/10 hover:border-white transition-colors w-full sm:w-auto text-center"
               >
                 See How It Works
               </button>

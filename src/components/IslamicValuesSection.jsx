@@ -6,7 +6,7 @@ export default function IslamicValuesSection() {
     <section id="values" className="section-padding bg-[#FDF8EF]">
       <div className="container-custom">
         <div className="text-center max-w-3xl mx-auto mb-16 reveal-up">
-          <div className="font-arabic text-4xl md:text-5xl text-gold-500 mb-6 leading-relaxed">
+          <div className="font-arabic text-3xl sm:text-4xl md:text-5xl text-gold-500 mb-6 leading-[2] md:leading-[2.2] lg:leading-[2.4] py-3 px-4">
             مَّثَلُ الَّذِينَ يُنفِقُونَ أَمْوَالَهُمْ فِي سَبِيلِ اللَّهِ كَمَثَلِ حَبَّةٍ أَنبَتَتْ سَبْعَ سَنَابِلَ
           </div>
           <p className="font-body text-green-950/80 text-lg md:text-xl italic mb-8">
