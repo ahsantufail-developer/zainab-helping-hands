@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { QRCodeSVG } from 'qrcode.react';
+import qrEasypaisa from '../assets/qr_real_easypaisa.jpg';
 import confetti from 'canvas-confetti';
 import './Donate.css';
 
@@ -33,20 +33,20 @@ const Donate = () => {
               <div className="bank-cards">
                 <div className="bank-card">
                   <h4>Meezan Bank</h4>
-                  <p>Account Title: Muhammad Abubakar Ejaz</p>
+                  <p>Account Title: Muhammad Abu Bakar Ejaz</p>
                   <p className="account-number">12560108600042</p>
                 </div>
                 <div className="bank-card">
                   <h4>EasyPaisa</h4>
-                  <p>Account Title: Muhammad Abubakar Ejaz</p>
+                  <p>Account Title: Muhammad Abu Bakkar Ejaz</p>
                   <p className="account-number">03106496614</p>
                 </div>
               </div>
               
               <div className="qr-section">
                 <p>Scan to Pay via EasyPaisa</p>
-                <div className="qr-code-wrapper">
-                  <QRCodeSVG value="03106496614" size={150} />
+                <div className="qr-code-wrapper flex justify-center items-center p-2 bg-white rounded">
+                  <img src={qrEasypaisa} alt="EasyPaisa QR Code" className="w-[150px] h-[150px] object-contain rounded" />
                 </div>
               </div>
             </div>

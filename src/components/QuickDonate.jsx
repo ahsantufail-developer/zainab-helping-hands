@@ -1,6 +1,7 @@
 import React, { useState, useRef, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { QRCodeSVG } from 'qrcode.react';
+import qrMeezan from '../assets/qr_real_meezan.jpg';
+import qrEasypaisa from '../assets/qr_real_easypaisa.jpg';
 
 const MILESTONES = [
   { amount: 500, icon: '🌾', label: 'Feed a child for a week', hadith: '"The best charity is that given in Ramadan." — Tirmidhi' },
@@ -18,7 +19,7 @@ const PAYMENT_METHODS = [
     name: 'Meezan Bank',
     icon: '🏦',
     color: '#00634B',
-    accountTitle: 'Muhammad Abubakar Ejaz',
+    accountTitle: 'Muhammad Abu Bakar Ejaz',
     accountNumber: '12560108600042',
     details: 'Meezan Bank Ltd.'
   },
@@ -27,7 +28,7 @@ const PAYMENT_METHODS = [
     name: 'EasyPaisa',
     icon: '📱',
     color: '#3AAA35',
-    accountTitle: 'Muhammad Abubakar Ejaz',
+    accountTitle: 'Muhammad Abu Bakkar Ejaz',
     accountNumber: '03106496614',
     details: 'EasyPaisa Wallet'
   }
@@ -308,20 +309,12 @@ export default function QuickDonate() {
                       initial={{ scale: 0, rotate: -180 }}
                       animate={{ scale: 1, rotate: 0 }}
                       transition={{ type: 'spring', stiffness: 200, damping: 15, delay: 0.2 }}
-                      className="p-4 bg-white border-2 border-gray-100 rounded-xl shadow-inner"
+                      className="p-4 bg-white border-2 border-gray-100 rounded-xl shadow-inner flex justify-center items-center"
                     >
-                      <QRCodeSVG 
-                        value={qrValue}
-                        size={200}
-                        level="H"
-                        fgColor="#0A1A0F"
-                        bgColor="#FFFFFF"
-                        imageSettings={{
-                          src: '',
-                          height: 0,
-                          width: 0,
-                          excavate: false
-                        }}
+                      <img 
+                        src={selectedMethod === 'meezan' ? qrMeezan : qrEasypaisa}
+                        alt={`${method.name} Payment QR Code`}
+                        className="w-[200px] h-[200px] object-contain rounded-lg"
                       />
                     </motion.div>
                   </div>

@@ -1,10 +1,14 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useGSAP } from '@gsap/react';
 import SplitType from 'split-type';
 import { Heart } from 'lucide-react';
-import heroBg from './assets/hero_bg.png';
+import { motion, AnimatePresence } from 'framer-motion';
+
+import heroBg1 from './assets/gallery_real_team.jpg';
+import heroBg2 from './assets/gallery_real_cart.jpg';
+import heroBg3 from './assets/gallery_real_packing.jpg';
 
 import Navbar from './components/Navbar';
 import HeroShader from './components/HeroShader';
@@ -24,6 +28,15 @@ gsap.registerPlugin(ScrollTrigger);
 
 function App() {
   const heroRef = useRef(null);
+  const heroBgs = [heroBg1, heroBg2, heroBg3];
+  const [bgIndex, setBgIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setBgIndex((prev) => (prev + 1) % heroBgs.length);
+    }, 5500);
+    return () => clearInterval(interval);
+  }, []);
 
   useGSAP(() => {
     // We use SplitType instead of SplitText as SplitText is a premium GreenSock plugin,
@@ -105,15 +118,23 @@ function App() {
           }}
         />
 
-        {/* Full-bleed background image with gradient overlay */}
-        <div 
-          className="absolute inset-0 z-[2] bg-cover bg-center"
-          style={{ backgroundImage: `url(${heroBg})` }}
-        >
+        {/* Full-bleed background image with smooth Framer Motion cross-fade */}
+        <div className="absolute inset-0 z-[2] overflow-hidden">
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={bgIndex}
+              initial={{ opacity: 0, scale: 1.03 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.98 }}
+              transition={{ duration: 1.6, ease: 'easeInOut' }}
+              className="absolute inset-0 bg-cover bg-center"
+              style={{ backgroundImage: `url(${heroBgs[bgIndex]})` }}
+            />
+          </AnimatePresence>
           <div 
-            className="absolute inset-0"
+            className="absolute inset-0 z-[3]"
             style={{
-              background: 'linear-gradient(135deg, rgba(10,26,15,0.92) 0%, rgba(26,92,56,0.60) 60%, rgba(201,149,42,0.25) 100%)'
+              background: 'linear-gradient(135deg, rgba(10,26,15,0.95) 0%, rgba(10,26,15,0.75) 50%, rgba(201,149,42,0.25) 100%)'
             }}
           />
         </div>

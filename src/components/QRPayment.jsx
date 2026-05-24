@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { QRCodeSVG } from 'qrcode.react';
-import { generateQRValue } from '../utils/qrGenerator';
+import qrMeezan from '../assets/qr_real_meezan.jpg';
+import qrEasypaisa from '../assets/qr_real_easypaisa.jpg';
 
 export default function QRPayment({ amount, cause, isMonthly, donorDetails, onComplete }) {
   const [activeTab, setActiveTab] = useState('easypaisa');
@@ -81,11 +81,17 @@ export default function QRPayment({ amount, cause, isMonthly, donorDetails, onCo
               {activeTab === 'bank' ? (
                 <div className="bg-surface rounded-lg p-6 border border-borderBase">
                   <h4 className="font-heading text-xl text-green-950 mb-4">Direct Bank Transfer</h4>
-                  <div className="space-y-3 font-body text-sm text-green-950">
-                    <p><span className="text-textMuted inline-block w-24">Bank:</span> <strong>Meezan Bank</strong></p>
-                    <p><span className="text-textMuted inline-block w-24">Title:</span> <strong>Muhammad Abubakar Ejaz</strong></p>
-                    <p><span className="text-textMuted inline-block w-24">Account:</span> <strong className="text-lg">12560108600042</strong></p>
-                    <p><span className="text-textMuted inline-block w-24">IBAN:</span> <strong className="font-mono text-xs">PK42 MEZN 0012 5601 0860 0042</strong></p>
+                  <div className="flex flex-col sm:flex-row gap-6 items-center">
+                    <div className="flex-1 space-y-3 font-body text-sm text-green-950 w-full">
+                      <p><span className="text-textMuted inline-block w-20">Bank:</span> <strong>Meezan Bank</strong></p>
+                      <p><span className="text-textMuted inline-block w-20">Title:</span> <strong>Muhammad Abu Bakar Ejaz</strong></p>
+                      <p><span className="text-textMuted inline-block w-20">Account:</span> <strong className="text-[16px]">12560108600042</strong></p>
+                      <p><span className="text-textMuted inline-block w-20">IBAN:</span> <strong className="font-mono text-xs">PK42 MEZN 0012 5601 0860 0042</strong></p>
+                    </div>
+                    <div className="flex-none p-2 bg-white rounded-lg border border-gray-100 shadow-sm flex flex-col items-center">
+                      <img src={qrMeezan} alt="Meezan Bank QR Code" className="w-[140px] h-[140px] object-contain rounded" />
+                      <span className="text-[10px] text-gray-500 mt-1 font-body">Scan via banking app</span>
+                    </div>
                   </div>
                   <div className="mt-6 p-3 bg-green-100 rounded text-green-800 text-sm flex items-center justify-center text-center">
                     Screenshot this and send to WhatsApp after transfer
@@ -97,15 +103,12 @@ export default function QRPayment({ amount, cause, isMonthly, donorDetails, onCo
                     initial={{ scale: 0, rotate: -10, opacity: 0 }}
                     animate={{ scale: 1, rotate: 0, opacity: 1 }}
                     transition={{ type: 'spring', stiffness: 200, damping: 20, delay: 0.1 }}
-                    className="qr-wrapper p-4 bg-white rounded-xl mb-6 shadow-sm border border-gray-100"
+                    className="qr-wrapper p-4 bg-white rounded-xl mb-6 shadow-sm border border-gray-100 flex justify-center items-center"
                   >
-                    <QRCodeSVG 
-                      value={generateQRValue(activeTab, amount, cause)}
-                      size={200}
-                      bgColor="#FFFFFF"
-                      fgColor="#1A5C38"
-                      level="H"
-                      includeMargin={true}
+                    <img 
+                      src={qrEasypaisa}
+                      alt="EasyPaisa Payment QR Code"
+                      className="w-[200px] h-[200px] object-contain rounded-lg"
                     />
                   </motion.div>
                   
