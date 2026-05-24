@@ -10,7 +10,7 @@ export default function Footer() {
           
           <div className="col-span-1">
             <div className="flex items-center gap-3 text-white mb-6">
-              <img src={logoImg} alt="Zainab Helping Hands Logo" className="w-10 h-10 object-contain" />
+              <img src={logoImg} alt="Zainab Helping Hands Logo" className="w-14 h-14 object-contain" />
               <span className="font-heading text-xl tracking-wide">Zainab Helping Hands</span>
             </div>
             <p className="font-body text-white/70 text-sm leading-relaxed mb-6">

@@ -40,7 +40,7 @@ export default function Navbar() {
           
           {/* Logo */}
           <div className="flex items-center gap-3 text-green-950">
-            <img src={logoImg} alt="Zainab Helping Hands Logo" className="w-10 h-10 object-contain" />
+            <img src={logoImg} alt="Zainab Helping Hands Logo" className="w-14 h-14 object-contain" />
             <span className="font-heading text-xl tracking-wide">Zainab Helping Hands</span>
           </div>
 
