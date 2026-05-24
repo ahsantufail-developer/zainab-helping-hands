@@ -1,9 +1,10 @@
 import React, { useRef, useState } from 'react';
-import { HeartHandshake, Menu, X } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useGSAP } from '@gsap/react';
 import { motion, AnimatePresence } from 'framer-motion';
+import logoImg from '../assets/logo.png';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -39,7 +40,7 @@ export default function Navbar() {
           
           {/* Logo */}
           <div className="flex items-center gap-3 text-green-950">
-            <HeartHandshake size={28} className="text-gold-500" />
+            <img src={logoImg} alt="Zainab Helping Hands Logo" className="w-10 h-10 object-contain" />
             <span className="font-heading text-xl tracking-wide">Zainab Helping Hands</span>
           </div>
 

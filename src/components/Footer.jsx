@@ -1,5 +1,6 @@
 import React from 'react';
 import { HeartHandshake } from 'lucide-react';
+import logoImg from '../assets/logo.png';
 
 export default function Footer() {
   return (
@@ -9,7 +10,7 @@ export default function Footer() {
           
           <div className="col-span-1">
             <div className="flex items-center gap-3 text-white mb-6">
-              <HeartHandshake size={28} className="text-gold-500" />
+              <img src={logoImg} alt="Zainab Helping Hands Logo" className="w-10 h-10 object-contain" />
               <span className="font-heading text-xl tracking-wide">Zainab Helping Hands</span>
             </div>
             <p className="font-body text-white/70 text-sm leading-relaxed mb-6">

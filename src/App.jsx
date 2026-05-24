@@ -14,6 +14,7 @@ import ProcessTimeline from './components/ProcessTimeline';
 import TransparencySection from './components/TransparencySection';
 import GallerySection from './components/GallerySection';
 import IslamicValuesSection from './components/IslamicValuesSection';
+import TeamSection from './components/TeamSection';
 import DonationFlow from './components/DonationFlow';
 import Footer from './components/Footer';
 
@@ -171,6 +172,7 @@ function App() {
       <TransparencySection />
       <GallerySection />
       <IslamicValuesSection />
+      <TeamSection />
       <DonationFlow />
       <Footer />
     </>
