@@ -6,12 +6,13 @@ import SplitType from 'split-type';
 import { Heart } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
-import heroBg1 from './assets/gallery_real_team.jpg';
-import heroBg2 from './assets/gallery_real_cart.jpg';
-import heroBg3 from './assets/gallery_real_packing.jpg';
+import heroBg1 from './assets/hero_real_ration1.jpg';
+import heroBg2 from './assets/hero_real_ration2.jpg';
+import heroBg3 from './assets/hero_real_ration3.jpg';
+import heroBg4 from './assets/hero_real_ration4.jpg';
+import heroBg5 from './assets/hero_real_ration5.jpg';
 
 import Navbar from './components/Navbar';
-import HeroShader from './components/HeroShader';
 import CounterStrip from './components/CounterStrip';
 import MissionSection from './components/MissionSection';
 import ProgramsSection from './components/ProgramsSection';
@@ -28,7 +29,7 @@ gsap.registerPlugin(ScrollTrigger);
 
 function App() {
   const heroRef = useRef(null);
-  const heroBgs = [heroBg1, heroBg2, heroBg3];
+  const heroBgs = [heroBg1, heroBg2, heroBg3, heroBg4, heroBg5];
   const [bgIndex, setBgIndex] = useState(0);
 
   useEffect(() => {
@@ -104,10 +105,8 @@ function App() {
       <Navbar />
 
       {/* HERO SECTION */}
-      <section ref={heroRef} className="relative h-screen min-h-[700px] overflow-hidden flex items-center bg-[#0F2518]">
+      <section ref={heroRef} className="relative h-screen min-h-[700px] overflow-hidden flex items-center bg-[#07130B]">
         
-        <HeroShader />
-
         {/* Islamic star SVG pattern overlay */}
         <div 
           className="absolute inset-0 z-[1] opacity-[0.04]"
@@ -131,10 +130,11 @@ function App() {
               style={{ backgroundImage: `url(${heroBgs[bgIndex]})` }}
             />
           </AnimatePresence>
+          {/* Subtle Darkening Overlay (not thick muddy green) */}
           <div 
             className="absolute inset-0 z-[3]"
             style={{
-              background: 'linear-gradient(135deg, rgba(10,26,15,0.95) 0%, rgba(10,26,15,0.75) 50%, rgba(201,149,42,0.25) 100%)'
+              background: 'linear-gradient(to bottom, rgba(10,26,15,0.4) 0%, rgba(10,26,15,0.85) 100%)'
             }}
           />
         </div>
