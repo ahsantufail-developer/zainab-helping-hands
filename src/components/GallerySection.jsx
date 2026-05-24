@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import Lightbox from './Lightbox';
 
@@ -7,6 +7,11 @@ import galleryKids from '../assets/gallery_real_kids.jpg';
 import galleryCart from '../assets/gallery_real_cart.jpg';
 import galleryBadges from '../assets/gallery_real_badges.jpg';
 import galleryFood from '../assets/gallery_real_food.jpg';
+import galleryBriefing from '../assets/gallery_real_briefing.jpg';
+import galleryTeam from '../assets/gallery_real_team.jpg';
+import galleryPacking from '../assets/gallery_real_packing.jpg';
+import galleryCommunity from '../assets/gallery_real_community.jpg';
+import galleryYouth from '../assets/gallery_real_youth.jpg';
 
 const galleryImages = [
   {
@@ -33,14 +38,69 @@ const galleryImages = [
     src: galleryFood,
     caption: 'Organized Styrofoam Food Packages',
     alt: 'Neatly organized white styrofoam lunch boxes in bags, prepped and stickered with the organization label for the daily food drive.'
+  },
+  {
+    src: galleryBriefing,
+    caption: 'Volunteer Briefing Session',
+    alt: 'A bearded coordinator in a neon vest giving operational instructions to active volunteers before starting a distribution drive.'
+  },
+  {
+    src: galleryTeam,
+    caption: 'Welfare Distribution Assembly',
+    alt: 'A group of Zainab Helping Hands volunteers standing proudly side-by-side inside the brick-walled distribution center.'
+  },
+  {
+    src: galleryPacking,
+    caption: 'Bagging Prepared Meals',
+    alt: 'Two dedicated youth volunteers in safety vests working on their knees to pack individual hot meals into distribution bags.'
+  },
+  {
+    src: galleryCommunity,
+    caption: 'Direct Community Connection',
+    alt: 'Co-founder standing outdoors with a local elder in a purple tunic and a smiling boy, sharing a positive moment.'
+  },
+  {
+    src: galleryYouth,
+    caption: 'Youth Volunteer Brigade',
+    alt: 'A lineup of eight passionate young volunteers in matching neon green vests, smiling and prepared to support ground operations.'
   }
 ];
 
 export default function GallerySection() {
   const [activeIndex, setActiveIndex] = useState(null);
+  const [isPaused, setIsPaused] = useState(false);
   const scrollContainerRef = useRef(null);
 
+  // Auto-scroll loop
+  useEffect(() => {
+    if (isPaused) return;
+
+    const interval = setInterval(() => {
+      if (scrollContainerRef.current) {
+        const { scrollLeft, scrollWidth, clientWidth } = scrollContainerRef.current;
+        
+        // Loop back to start if we reach close to the end
+        if (scrollLeft + clientWidth >= scrollWidth - 20) {
+          scrollContainerRef.current.scrollTo({ left: 0, behavior: 'smooth' });
+        } else {
+          // Scroll by one card-width equivalent (approx 360px on mobile, 450px on desktop)
+          const scrollStep = clientWidth > 768 ? 400 : 300;
+          scrollContainerRef.current.scrollTo({ 
+            left: scrollLeft + scrollStep, 
+            behavior: 'smooth' 
+          });
+        }
+      }
+    }, 3500); // Smooth scroll every 3.5 seconds
+
+    return () => clearInterval(interval);
+  }, [isPaused]);
+
   const scroll = (direction) => {
+    // Temporarily pause auto-scroll upon user manual click to allow reading
+    setIsPaused(true);
+    setTimeout(() => setIsPaused(false), 8000);
+
     if (scrollContainerRef.current) {
       const { scrollLeft, clientWidth } = scrollContainerRef.current;
       const scrollTo = direction === 'left' 
@@ -61,7 +121,12 @@ export default function GallerySection() {
   };
 
   return (
-    <section id="gallery" className="relative bg-[#0A1A0F] py-24 md:py-32 overflow-hidden border-t border-b border-white/5">
+    <section 
+      id="gallery" 
+      className="relative bg-[#0A1A0F] py-24 md:py-32 overflow-hidden border-t border-b border-white/5"
+      onMouseEnter={() => setIsPaused(true)}
+      onMouseLeave={() => setIsPaused(false)}
+    >
       <style>{`
         .no-scrollbar::-webkit-scrollbar {
           display: none;
@@ -147,6 +212,11 @@ export default function GallerySection() {
             ref={scrollContainerRef}
             className="flex gap-6 overflow-x-auto no-scrollbar scroll-smooth snap-x snap-mandatory py-4 px-8 sm:px-24 md:px-36"
             style={{ scrollbarWidth: 'none' }}
+            onTouchStart={() => setIsPaused(true)}
+            onTouchEnd={() => {
+              // Delay resumption of scroll after mobile touch gesture ends
+              setTimeout(() => setIsPaused(false), 5000);
+            }}
           >
             {galleryImages.map((img, i) => (
               <motion.div 
@@ -154,7 +224,7 @@ export default function GallerySection() {
                 initial={{ opacity: 0, scale: 0.95 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: i * 0.1 }}
+                transition={{ duration: 0.5, delay: i * 0.05 }}
                 className="flex-none w-[290px] sm:w-[380px] md:w-[480px] aspect-[4/3] relative rounded-2xl overflow-hidden snap-center group/card cursor-pointer border border-white/10 shadow-2xl hover:border-gold-500/40 hover:shadow-[0_0_40px_rgba(201,149,42,0.15)] transition-all duration-500"
                 onClick={() => setActiveIndex(i)}
               >
@@ -196,4 +266,5 @@ export default function GallerySection() {
     </section>
   );
 }
+
 
