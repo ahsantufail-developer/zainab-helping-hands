@@ -17,6 +17,7 @@ import GallerySection from './components/GallerySection';
 import IslamicValuesSection from './components/IslamicValuesSection';
 import TeamSection from './components/TeamSection';
 import DonationFlow from './components/DonationFlow';
+import QuickDonate from './components/QuickDonate';
 import Footer from './components/Footer';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -175,6 +176,7 @@ function App() {
       <IslamicValuesSection />
       <TeamSection />
       <DonationFlow />
+      <QuickDonate />
       <Footer />
     </>
   );
