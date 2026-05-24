@@ -13,6 +13,9 @@ import galleryYouth from '../assets/gallery_real_youth.jpg';
 import galleryServing from '../assets/gallery_real_serving.jpg';
 import galleryLoading from '../assets/gallery_real_loading.jpg';
 import galleryVan from '../assets/gallery_real_van.jpg';
+import galleryEidDelivery from '../assets/gallery_real_eid_delivery.jpg';
+import galleryEidPrep from '../assets/gallery_real_eid_prep.jpg';
+import galleryEidChecking from '../assets/gallery_real_eid_checking.jpg';
 
 const row1Images = [
   {
@@ -44,6 +47,16 @@ const row1Images = [
     src: galleryYouth,
     caption: 'Youth Volunteer Brigade',
     alt: 'A lineup of eight passionate young volunteers in matching neon green vests, smiling and prepared to support ground operations.'
+  },
+  {
+    src: galleryEidPrep,
+    caption: 'Eid Meat Preparation & Packaging',
+    alt: 'Freshly cut sacrificial meat portions laid out on a red sheet, being sorted and packed into clear bags for distribution in front of a celebratory Eid-ul-Adha Mubarak banner.'
+  },
+  {
+    src: galleryEidDelivery,
+    caption: 'Doorstep Eid Meat Distribution',
+    alt: 'A smiling volunteer in a traditional shalwar kameez and prayer cap delivering a fresh meat pack directly to a family doorway at a traditional brick house.'
   }
 ];
 
@@ -77,6 +90,11 @@ const row2Images = [
     src: galleryBadges,
     caption: 'Dedicated Volunteer Network Badges',
     alt: 'Stacked official volunteer ID badges printed with Zainab Helping Hands titles, social handles, and logos in transparent protective cases.'
+  },
+  {
+    src: galleryEidChecking,
+    caption: 'Eid Campaign Quality Check',
+    alt: 'A dedicated volunteer in a traditional grey shalwar kameez and patterned prayer cap inspecting a freshly packed meat bag before distribution in front of a red metal gate.'
   }
 ];
 
