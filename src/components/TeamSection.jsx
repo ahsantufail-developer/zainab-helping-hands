@@ -5,6 +5,9 @@ import { StaggerContainer, StaggerItem, TiltCard } from './shared';
 import aliImg from '../assets/founder1.jpg';
 import abubakarImg from '../assets/founder2.jpg';
 import hadiImg from '../assets/founder3.jpg';
+import hammadImg from '../assets/team_hammad.jpg';
+import junaidImg from '../assets/team_junaid.jpg';
+import maymoonahImg from '../assets/team_maymoonah.jpg';
 
 const team = [
   {
@@ -30,6 +33,30 @@ const team = [
     desc: 'Leading daily operations, managing strategy, and directing the executive execution of all humanitarian projects.',
     image: hadiImg,
     orderClass: 'order-1 md:order-3'
+  },
+  {
+    name: 'Hammad Ahmad',
+    role: 'Volunteer Head',
+    color: '#EAB308',
+    desc: 'Directing our dedicated on-ground volunteer network, organizing distribution drives, and coordinating real-time welfare logistics.',
+    image: hammadImg,
+    orderClass: 'order-4 md:order-4'
+  },
+  {
+    name: 'Muhammad Junaid Bilal',
+    role: 'Finance Head',
+    color: '#3B82F6',
+    desc: 'Managing financial ledgers, auditing Zakat channels, and maintaining absolute transparent reporting for all public donations.',
+    image: junaidImg,
+    orderClass: 'order-5 md:order-5'
+  },
+  {
+    name: 'Maymoonah Aslam',
+    role: 'Social Media Lead',
+    color: '#EC4899',
+    desc: 'Crafting community engagement strategy, capturing distribution media, and showcasing verified delivery proofs online.',
+    image: maymoonahImg,
+    orderClass: 'order-6 md:order-6'
   }
 ];
 
