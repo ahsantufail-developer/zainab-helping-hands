@@ -14,11 +14,11 @@ const partners = [
 ];
 
 export default function PartnersSection() {
-  // 10 items total in the list
+  // Duplicating the list once to ensure mathematical seamlessness
   const partnersList = [...partners, ...partners];
 
   return (
-    <div className="relative bg-[#07130B] border-t border-b border-white/20 py-8 overflow-hidden z-20">
+    <div className="relative bg-[#07130B] border-t border-b border-white/10 py-12 overflow-hidden z-20">
       <style>{`
         @keyframes marqueePartners {
           0% { transform: translateX(0); }
@@ -27,30 +27,46 @@ export default function PartnersSection() {
         .partners-track {
           display: flex;
           width: max-content;
-          animation: marqueePartners 35s linear infinite;
+          animation: marqueePartners 25s linear infinite;
+        }
+        .partner-logo-container {
+          height: 60px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+        @media (min-width: 640px) {
+          .partner-logo-container {
+            height: 90px;
+          }
+        }
+        @media (min-width: 1024px) {
+          .partner-logo-container {
+            height: 120px;
+          }
         }
       `}</style>
       
       {/* Mini Title above the track */}
-      <div className="text-center mb-6 px-4">
-        <span className="font-body text-[10px] sm:text-xs text-white/40 uppercase tracking-[0.3em] font-semibold block">
+      <div className="text-center mb-10 px-4">
+        <span className="font-body text-[10px] sm:text-xs text-white/30 uppercase tracking-[0.4em] font-semibold block">
           ✦ Our Trusted Corporate & Community Partners ✦
         </span>
       </div>
 
       {/* Infinite Scrolling track */}
-      <div className="overflow-hidden w-full flex">
-        <div className="partners-track gap-6 px-2">
-          {/* First full copy of the list */}
+      <div className="overflow-hidden w-full flex items-center">
+        <div className="partners-track gap-10 sm:gap-14 md:gap-18 px-4 items-center">
+          {/* First copy of the list */}
           {partnersList.map((partner, idx) => (
             <div 
               key={`p1-${idx}`}
-              className="flex-shrink-0 bg-white/95 rounded-xl px-5 py-3.5 flex items-center justify-center h-16 w-40 sm:h-20 sm:w-44 shadow-xl border border-white/10"
+              className="partner-logo-container flex-shrink-0 px-2"
             >
               <img 
                 src={partner.src} 
                 alt={partner.name} 
-                className="max-h-full max-w-full object-contain filter hover:scale-105 transition-transform duration-300 pointer-events-none"
+                className="h-full w-auto object-contain hover:scale-105 transition-all duration-300 pointer-events-none"
                 loading="lazy"
               />
             </div>
@@ -59,12 +75,12 @@ export default function PartnersSection() {
           {partnersList.map((partner, idx) => (
             <div 
               key={`p2-${idx}`}
-              className="flex-shrink-0 bg-white/95 rounded-xl px-5 py-3.5 flex items-center justify-center h-16 w-40 sm:h-20 sm:w-44 shadow-xl border border-white/10"
+              className="partner-logo-container flex-shrink-0 px-2"
             >
               <img 
                 src={partner.src} 
                 alt={partner.name} 
-                className="max-h-full max-w-full object-contain filter hover:scale-105 transition-transform duration-300 pointer-events-none"
+                className="h-full w-auto object-contain hover:scale-105 transition-all duration-300 pointer-events-none"
                 loading="lazy"
               />
             </div>
@@ -74,3 +90,5 @@ export default function PartnersSection() {
     </div>
   );
 }
+
+
