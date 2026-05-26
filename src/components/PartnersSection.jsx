@@ -14,11 +14,8 @@ const partners = [
 ];
 
 export default function PartnersSection() {
-  // Duplicating the list once to ensure mathematical seamlessness
-  const partnersList = [...partners, ...partners];
-
   return (
-    <div className="relative bg-[#07130B] border-t border-b border-white/10 py-12 overflow-hidden z-20">
+    <div className="relative bg-[#07130B] border-t border-b border-white/10 py-10 overflow-hidden z-20">
       <style>{`
         @keyframes marqueePartners {
           0% { transform: translateX(0); }
@@ -27,28 +24,28 @@ export default function PartnersSection() {
         .partners-track {
           display: flex;
           width: max-content;
-          animation: marqueePartners 25s linear infinite;
+          animation: marqueePartners 30s linear infinite;
         }
         .partner-logo-container {
-          height: 60px;
+          height: 48px;
           display: flex;
           align-items: center;
           justify-content: center;
         }
         @media (min-width: 640px) {
           .partner-logo-container {
-            height: 90px;
+            height: 68px;
           }
         }
         @media (min-width: 1024px) {
           .partner-logo-container {
-            height: 120px;
+            height: 88px;
           }
         }
       `}</style>
       
       {/* Mini Title above the track */}
-      <div className="text-center mb-10 px-4">
+      <div className="text-center mb-8 px-4">
         <span className="font-body text-[10px] sm:text-xs text-white/30 uppercase tracking-[0.4em] font-semibold block">
           ✦ Our Trusted Corporate & Community Partners ✦
         </span>
@@ -56,12 +53,12 @@ export default function PartnersSection() {
 
       {/* Infinite Scrolling track */}
       <div className="overflow-hidden w-full flex items-center">
-        <div className="partners-track gap-10 sm:gap-14 md:gap-18 px-4 items-center">
-          {/* First copy of the list */}
-          {partnersList.map((partner, idx) => (
+        <div className="partners-track gap-16 sm:gap-24 md:gap-32 px-4 items-center">
+          {/* First copy of the 5 unique partners */}
+          {partners.map((partner, idx) => (
             <div 
               key={`p1-${idx}`}
-              className="partner-logo-container flex-shrink-0 px-2"
+              className="partner-logo-container flex-shrink-0 px-4"
             >
               <img 
                 src={partner.src} 
@@ -71,11 +68,11 @@ export default function PartnersSection() {
               />
             </div>
           ))}
-          {/* Second duplicate copy of the list for perfect seamless wrapping */}
-          {partnersList.map((partner, idx) => (
+          {/* Second duplicate copy of the 5 unique partners for perfect seamless wrapping */}
+          {partners.map((partner, idx) => (
             <div 
               key={`p2-${idx}`}
-              className="partner-logo-container flex-shrink-0 px-2"
+              className="partner-logo-container flex-shrink-0 px-4"
             >
               <img 
                 src={partner.src} 
@@ -90,5 +87,6 @@ export default function PartnersSection() {
     </div>
   );
 }
+
 
 
