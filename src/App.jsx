@@ -14,6 +14,7 @@ import heroBg5 from './assets/hero_real_ration5.jpg';
 
 import Navbar from './components/Navbar';
 import CounterStrip from './components/CounterStrip';
+import PartnersSection from './components/PartnersSection';
 import MissionSection from './components/MissionSection';
 import ProgramsSection from './components/ProgramsSection';
 import ProcessTimeline from './components/ProcessTimeline';
@@ -187,6 +188,8 @@ function App() {
         </div>
 
       </section>
+
+      <PartnersSection />
 
       <CounterStrip />
       <MissionSection />
